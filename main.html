@@ -1,0 +1,1448 @@
+<!DOCTTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Films Zone</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://www.solodev.com/assets/pagination/jquery.twbsPagination.js"></script>
+    <script src="https://kit.fontawesome.com/0226cb1156.js" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function()
+        {
+          $(window).scroll(function()
+            {
+                if($(this).scrollTop()>205)
+                    {
+                        $("#scroll-top").fadeIn(500);
+                    }
+                else
+                    {
+                        $("#scroll-top").fadeOut(500);
+                    }
+            });
+        $("#scroll-top").click(function()                    
+        {
+         $("html, body").animate({ scrollTop: "0"},500)   
+        });
+        
+        });
+        
+    </script>
+    
+    <script type="text/javascript">
+        $('#pagination').twbsPagination({
+          totalPages: 5,
+          // the current page that show on start
+          startPage: 1,
+
+          // maximum visible pages
+          visiblePages: 5,
+
+          initiateStartPageClick: true,
+
+          // template for pagination links
+          href: false,
+
+          // variable name in href template for page number
+          hrefVariable: '{{number}}',
+
+          // Text labels
+          first: 'First',
+          prev: 'Previous',
+          next: 'Next',
+          last: 'Last',
+
+          // carousel-style pagination
+          loop: false,
+
+          // callback function
+          onPageClick: function (event, page) {
+            $('.page-active').removeClass('page-active');
+            $('#page'+page).addClass('page-active');
+          },
+
+          // pagination Classes
+          paginationClass: 'pagination',
+          nextClass: 'next',
+          prevClass: 'prev',
+          lastClass: 'last',
+          firstClass: 'first',
+          pageClass: 'page',
+          activeClass: 'active',
+          disabledClass: 'disabled'
+
+        });
+        
+    </script>
+    
+</head>
+
+<style>
+
+body
+    {
+        width: 1000px;
+        margin: 40px auto;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.8),rgba(0,0,0,0.6))fixed;
+        font-family: tahoma;
+        padding: 0;
+    }
+#top
+    {
+        width: 1000px;
+        height: 120px;
+        background: black;
+        float: left;
+        color: white;
+        line-height: 120px;
+        text-align: center;
+        border: 1px solid lightgreen;
+        border-bottom: none;
+    }
+#header
+    {
+        width: 1000px;
+        height: 50px;
+        float: left;
+        background: black;
+        border: 1px solid lightgreen;
+    }
+.logo
+    {
+        width: 180px;
+        height: 50px;
+        border-right: 1px solid lightgreen;
+        float: left;
+        text-align: center;
+        font-size: 20px;
+        line-height: 50px;
+    }
+.logo a
+    {
+       text-decoration: none;
+    }
+.logo span
+    {
+        color: lightgreen;
+        transition: 1s;
+    }
+.logo span span
+    {
+        color: white;
+        transition: 1s;
+    }
+.logo:hover span
+    {
+        color: white;
+        transition: 1s;
+    }
+.logo:hover span span
+    {
+        color: lightgreen;
+        transition: 1s;
+    }
+.search-box
+    {
+        width: 600px;
+        height: 50px;
+        float: left;
+    }
+.search-box input
+    {
+        border: none;
+        outline: none;
+        height: 35px;
+        margin: 7.5px 7.5px;
+        position: absolute;
+        padding-left: 36px;
+        background: black;
+        color: white;
+        font-size: 16px;
+        padding-top: 3px;
+        transition: 1s;
+    }
+.search-box input:focus
+    {
+        width: 805px;
+        background: #757775;
+        transition: 1s;
+    }
+.search-box i
+    {
+        position: relative;
+        margin: 16px 15px;
+        color: white;
+        font-size:20px;
+    }
+.login-register
+    {
+        width: 120px;
+        height: 50px;
+        float: left;
+        text-align: center;
+        font-size: 24px;
+        line-height: 50px;
+        cursor: pointer;
+        color: white;
+        margin-left: 90px;
+    }
+.login
+    {
+        width: 60px;
+        height: 50px;
+        float: left;
+    }
+.login i
+    {
+        line-height: 48px;
+        transition: 1s;
+    }
+.login i:hover
+    {
+        color: lightgreen;
+        transition: 1s;
+    }
+.register
+    {
+        width: 60px;
+        height: 50px;
+        float: left;
+    }
+.register i
+    {
+        line-height: 48px;
+        transition: 1s;
+    }
+.register i:hover
+    {
+        color: lightgreen;
+        transition: 1s;
+    }
+#menu
+    {
+        width: 1000px;
+        height: 45px;
+        float: left;
+        background: #262626;
+        border: 1px solid lightGreen;
+        border-top: none;
+        line-height: 15px;
+    }    
+#menu ul
+    {
+        width: 800px;
+        float: left;
+        margin-left: -25px;
+    }
+#menu ul li
+    {
+        float: left;
+        margin-left: 15px;
+        list-style-type: none;
+        border-right: 1px solid lightgreen;
+        padding-right: 15px;
+    }
+#menu ul li a
+    {
+        text-decoration: none;
+        color: white;
+    }
+#menu ul li:hover a
+    {
+        color: lightgreen;
+        transition: 1s;
+    }
+#middle
+    {
+        width: 1000px;
+        height: 120px;
+        color: white;
+        float: left;
+        text-align: center;
+        line-height: 120px;
+        background: black;
+        border: 1px solid lightgreen;
+        border-top: none;
+    }
+#content
+    {
+        width: 1000px;
+        min-height: 1550px;
+        background: black;
+        float: left;
+        border: 1px solid lightgreen;
+        border-bottom: none;
+        border-top: none;
+    }
+.content-left
+    {
+        width: 700px;
+        min-height: 1550px;
+        float: left;
+        border-right: 1px solid lightgreen;
+        border-bottom: 1px solid lightgreen;
+    }
+.page-title
+    {
+        width: 700px;
+        height: 50px;
+        float: left;
+        border-bottom: 1px solid lightgreen;
+    }
+.page-title h5
+    {
+        border-left: 5px solid lightgreen;
+        padding-left: 10px;
+        height: 30px;
+        margin: 10px 12px;
+        line-height: 30px;
+        color: white;
+    }
+.movie-area
+    {
+        width: 700px;
+        min-height: 1550px;
+        padding: 0;
+    }
+.movie
+    {
+        width: 160px;
+        height: 225px;
+        float: left;
+        margin: 10px 5px;
+        overflow: hidden;
+    }
+.movie img
+    {
+        width: 160px;
+        height: 225px;
+    }
+.flag
+    {
+        width: 20px;
+        height:15px;
+        position: relative;
+        margin: -215px 130px;
+    }
+.flag img
+    {
+        width: 20px;
+        height: 15px;
+    }
+.properties
+    {
+        width: 160px;
+        height: 225px;
+        background: rgb(0,0,0,0.46);
+        position: relative;
+        margin-top: -280px;
+    }
+.year
+    {
+        width: 140px;
+        height: 25px;
+        margin: 4px 10px;
+        text-align: center;
+        line-height: 23px;
+        color: white;
+        font-size: 14px;
+        word-spacing: 10px;
+    }
+.year a
+    {
+        color: white;
+        text-decoration: none;
+    }
+.imdb
+    {
+        width: 110px;
+        height: 110px;
+        text-align: center;
+        border-radius: 100%;
+        margin: -3px 20px;
+        border: 5px solid lightgreen;
+    }
+.imdb span.imdb-score
+    {
+        position: absolute;
+        font-size: 30px;
+        margin: 20px -22px;
+        color: white;
+        
+    }
+.imdb span.imdb-score-title
+    {
+        position: absolute;
+        font-size: 20px;
+        margin: 55px -49.5px;
+        color: white;
+    }
+.name
+    {
+        width: 130px;
+        height: 35px;
+        margin: 11px 20px;
+        font-size: 14px;
+        overflow: hidden;
+        color: white;
+        word-wrap: break-word;
+        line-height: 13px;
+        padding-bottom: 5px;
+        text-align: center;
+    }
+.name a
+    {
+        color: white;
+        text-decoration: none;
+    }    
+.type
+    {
+        width: 140px;
+        height: 25px;
+        font-size: 14px;
+        margin: -9px 10px;
+        text-align: center;
+        line-height: 24px;
+        word-spacing: 10px;
+    }
+.type a
+    {
+        color: white;
+        text-decoration: none;
+    }
+.movie:hover .properties
+    {
+        margin-top: 190px;
+    }
+.movie:hover .flag
+    {
+        margin-left: -20px;
+    }
+.content-right
+    {
+        width: 299px;
+        height: 1766px;
+        float: left;
+        background: black;
+        border-bottom: 1px solid lightgreen;
+    }
+.page-title2
+    {
+        width: 298px;
+        height: 50px;
+        background: black;
+        float: left;
+        border-bottom: 1px solid lightgreen; 
+    }
+.page-title2#active
+    {
+        border-top: 1px solid lightgreen;
+    }
+.page-title2 h5
+    {
+        border-left: 5px solid lightgreen;
+        padding-left: 10px;
+        height: 30px;
+        margin: 10px 12px;
+        line-height: 30px;
+        color: white;
+    }
+.alert
+    {
+        width: 278px;
+        height: 29px;
+        font-size: 11.6px;
+        color: white;
+        line-height: 30px;
+        margin-top: 50px;
+        margin-left: 10px;
+    }
+.form
+    {
+        width: 298px;
+        height: 265px;
+    }
+.form select
+    {
+        width: 272px;
+        outline: none;
+        margin-left: 13px;
+        margin-top: 10px;
+        height: 30px;
+    }
+#buttons
+    {
+        width: 278px;
+        height: 30px;
+        margin: 15px 14px;
+    }
+.subbtn
+    {
+        width: 160px;
+        height: 30px;
+        outline: none;
+        border-radius: 8px;
+        border: 1px solid #afbbc7;
+        cursor: pointer;
+        background: linear-gradient(to bottom, #ffffff 0%, #d3dfe3 100%);
+    }
+.resbtn
+    {
+        width: 104.5px;
+        height: 30px;
+        outline: none;
+        border-radius: 8px;
+        border: 1px solid #afbbc7;
+        cursor: pointer;
+        background: linear-gradient(to bottom, #ffffff 0%, #d3dfe3 100%);
+    }
+.subbtn:hover
+    {
+        background: linear-gradient(to bottom, #ffffff 0%, #e6eff2 100%);
+    }
+.resbtn:hover
+    {
+        background: linear-gradient(to bottom, #ffffff 0%, #e6eff2 100%);
+    }
+    
+#Movie-Types
+    {
+        width: 298px;
+        margin-bottom: 10px;
+        height: 420px;
+        border: 1px solid lightgreen;
+        background: black;
+        margin: 27px -1px;
+        border-bottom: none;
+        border-right: none;
+    }
+#Movie-Types ul
+    {
+        width: 278px;
+        float: left;
+        padding: 0;
+        margin-left: 10px;
+        border-left: 1px solid lightgreen;
+        border-top: 1px solid lightgreen;
+    }
+#Movie-Types ul li
+    {
+        height: 1.5em;
+        line-height: 1.5em;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        list-style-type: none;
+        width: 137.5px;
+        font-size: 12px;
+        float: left;
+        padding: 10px 0 10px 0;
+        border: 1px solid lightgreen;
+        border-left: none;
+        border-top: none;
+    }
+#Movie-Types ul li a
+    {
+        text-decoration: none;
+        color: white;
+        margin-left: 7px;
+        mix-blend-mode: difference;
+    }
+#Movie-Types ul li:before
+    {
+        content: '';
+        position: absolute;
+        width: 3.9em;
+        height: inherit;
+        background: white;
+        top: 0;
+        left: -3.9em;
+        height: 38px;
+        transition: 0.4s;
+    }
+#Movie-Types ul li:hover:before
+    {
+        transform: scale(7);
+    }
+    
+    
+    
+#Filters
+    {
+        width: 298px;
+        margin-bottom: 10px;
+        height: 220px;
+        border: 1px solid lightgreen;
+        background: black;
+        margin: 27px -1px;
+        border-bottom: none;
+        border-right: none;
+    }
+#Filters ul
+    {
+        width: 278px;
+        float: left;
+        padding: 0;
+        margin-left: 10px;
+        border-left: 1px solid lightgreen;
+        border-top: 1px solid lightgreen;
+    }
+#Filters ul li
+    {
+        height: 1.5em;
+        line-height: 1.5em;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        list-style-type: none;
+        width: 137.5px;
+        font-size: 12px;
+        float: left;
+        padding: 10px 0 10px 0;
+        border: 1px solid lightgreen;
+        border-left: none;
+        border-top: none;
+    }
+#Filters ul li a
+    {
+        text-decoration: none;
+        color: white;
+        margin-left: 7px;
+        mix-blend-mode: difference;
+    }
+#Filters ul li:before
+    {
+        content: '';
+        position: absolute;
+        width: 3.9em;
+        height: inherit;
+        background: white;
+        top: 0;
+        left: -3.9em;
+        height: 38px;
+        transition: 0.4s;
+    }
+#Filters ul li:hover:before
+    {
+        transform: scale(7);
+    }
+    
+    
+   
+#Movie-Year
+    {
+        width: 298px;
+        margin-bottom: 10px;
+        height: 200px;
+        border: 1px solid lightgreen;
+        background: black;
+        margin: 27px -1px;
+        border-bottom: none;
+        border-right: none;
+        border-top: none;
+    }
+#Movie-Year ul
+    {
+        width: 278px;
+        float: left;
+        padding: 0;
+        margin-left: 10px;
+        border-left: 1px solid lightgreen;
+        border-top: 1px solid lightgreen;
+    }
+#Movie-Year ul li
+    {
+        height: 1.5em;
+        line-height: 1.5em;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        list-style-type: none;
+        width: 138px;
+        font-size: 12px;
+        float: left;
+        padding: 10px 0 10px 0;
+        border: 1px solid lightgreen;
+        border-left: none;
+        border-top: none;
+    }
+#Movie-Year ul li a
+    {
+        text-decoration: none;
+        color: white;
+        margin-left: 7px;
+        mix-blend-mode: difference;
+    }
+#Movie-Year ul li:before
+    {
+        content: '';
+        position: absolute;
+        width: 3.9em;
+        height: inherit;
+        background: white;
+        top: 0;
+        left: -3.9em;
+        height: 38px;
+        transition: 0.4s;
+    }
+#Movie-Year ul li:hover:before
+    {
+        transform: scale(7);
+    }
+#pagination
+    {
+        width: 1000px;
+        height: 80px;
+        background: black;
+        float: left;
+        border: 1px solid lightgreen;
+        border-top: none;
+        margin-top: 1px;
+        margin-bottom: 40px;
+    }
+#pagination ul
+    {
+        width: 550px;
+        margin: 23px 225px;
+    }
+#pagination ul li
+    {
+        list-style-type: none;
+        float: left;
+        min-width: 25px;
+        padding: 9px;
+        text-align: center;
+        border: 1px solid lightgreen;
+        border-right: none;
+    }
+#pagination ul li.active
+    {
+        border-right: 1px solid lightgreen;
+    }
+#pagination ul li a
+    {
+        text-decoration: none;
+        color: white;
+    }
+#pagination ul li:hover a
+    {
+        color: black;
+    }
+#pagination ul li:hover
+    {
+        background: white;
+    }
+#scroll-top
+    {
+        width: 40px;
+        height: 40px;
+        position: fixed;
+        background: black;
+        float: left;
+        color: white;
+        text-align: center;
+        margin: 580px 1125px;
+    }
+#scroll-top i
+    {
+        line-height: 40px;
+    }
+
+.page {
+  display: none;
+}
+.page-active {
+  display: block;
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</style>    
+    
+<body>
+    <div id="top">Ad Slot</div>
+    
+    <div id="header">
+        <div class="logo"><a href="main.html"><span>HD<span>Movie</span>     </span></a></div>
+    
+        <div class="search-box">
+        <input type="text" value="Search" maxlength="65" onblur="if(this.value == '') {this.value = 'Search'}" onfocus="if(this.value == 'Search') {this.value = ''}"><i class="fa fa-search"></i>
+        </div>
+    
+        <div class="login-register">
+            <div class="login"><i class="fas fa-sign-in-alt"></i></div>
+            <div class="register"><i class="fas fa-user-plus"></i></div>
+        </div>
+    </div>
+    
+    <div id="menu">
+        <ul>
+            <li><a href="">Home Page</a></li>
+            <li><a href="">2020 Movies</a></li>
+            <li><a href="">Coming Soon</a></li>
+            <li><a href="">Top 100</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </div>
+    
+    <div id="middle">Ad Slot</div>
+    <div id="content">
+        <div class="content-left">
+            <div class="page-title"><h5>Recently Added Movies</h5></div>
+            <div class="movie-area">
+                <div class="movie">
+                    <img src="Avengers_Infinity_War.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2018</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">8.4</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Avengers Infinity War</a></div>
+                        <div class="type"><a href="">Animation</a> <a href="">Action</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="John_Wick_Chapter_3_Parabellum.webp">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">7.5</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">John Wick: Chapter 3 – Parabellum</a></div>
+                        <div class="type"><a href="">Action</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Fast_and_The_Furious.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.4</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Fast & Furious Presents: Hobbs & Shaw</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Comedy</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Bad_Boys_For_Life.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2020</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.6</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Bad Boys for Life</a></div>
+                        <div class="type"><a href="">Action</a>    <a href="">Comedy</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Birds_Of_Prey.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2020</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.1</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Harley Quinn: Birds of Prey</a></div>
+                        <div class="type"><a href="">Action</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Bloodshot.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2020</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">5.7</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Bloodshot</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Adventure</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Godzilla_King_Of_The_Monsters.jpg_large">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.0</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Godzilla: King of the Monsters</a></div>
+                        <div class="type"><a href="">Sci-Fi</a> <a href="">Action</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Aladdin.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">7.0</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Aladdin</a></div>
+                        <div class="type"><a href="">Family</a> <a href="">Adventure</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="captainmarvel.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.9</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Avengers Infinity War</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Sci-Fi</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Avengers_Endgame.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">8.4</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Avengers Infinity War</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Sci-Fi</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Charlies_Angels.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">4.7</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Charlie's Angels</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Comedy</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Dark_Phoenix.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">5.8</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">X-Men: Dark Phoenix</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Sci-Fi</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Frozen_2.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.9</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Frozen 2</a></div>
+                        <div class="type"><a href="">Animation</a> <a href="">Family</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Jumanji_The_Next_Level.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.7</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Jumanji: The Next Level</a></div>
+                        <div class="type"><a href="">Adventure</a> <a href="">Comedy</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Men_In_Black_International.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">5.6</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Men in Black: International</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Sci-Fi</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Pokemon_Detective_Pikachu.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.6</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Pokémon Detective Pikachu</a></div>
+                        <div class="type"><a href="">Family</a> <a href="">Mystery</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="spider-man-far-from-home.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">7.5</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Spider-Man: Far From Home</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Adventure</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Terminator_Dark_Fate.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.2</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Terminator: Dark Fate</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Sci-Fi</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="The_Old_Guard.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2020</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.7</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">The Old Guard</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Fantasy</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Angel_Has_Fallen.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.4</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Angel Has Fallen</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Thriller</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Extraction.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2020</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.7</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Extraction</a></div>
+                        <div class="type"><a href="">action</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Gemini_Man.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">5.7</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Gemini Man</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Sci-Fi</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Mission_Impossible_Fallout.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2018</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">7.7</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Mission: Impossible – Fallout</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Adventure</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Knives_Out.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">7.9</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Knives Out</a></div>
+                        <div class="type"><a href="">Mystery</a> <a href="">Comedy</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="star-wars-the-rise-of-skywalker.jpeg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.6</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Star Wars: The Rise of Skywalker</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Sci-Fi</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="Rambo_Last_Blood.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.2</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">Rambo: Last Blood</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Western</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="6_Underground.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2019</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">6.1</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">6 Underground</a></div>
+                        <div class="type"><a href="">Action</a> <a href="">Thriller</a></div>
+                    </div>
+                </div>
+                
+                
+                <div class="movie">
+                    <img src="The_Invisible_Man.jpg">
+                    <div class="flag"><img src=""></div>
+                    <div class="properties">
+                        <div class="year"><a href="">2020</a> <a href="">720p</a></div>
+                        <div class="imdb">
+                            <span class="imdb-score">7.1</span>
+                            <span class="imdb-score-title">Imdb Score</span>
+                        </div>
+                        <div class="name"><a href="">The Invisible Man</a></div>
+                        <div class="type"><a href="">Horror</a> <a href="">Thriller</a></div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+        </div>
+    
+    <div class="content-right">
+        <div class="page-title2"><h5>Movie Robot</h5></div>
+        <div class="alert">You Don't Need To Choose All Of The Options</div>
+        <div class="form">
+            <form>
+                <select>
+                    <option>- Movie Style -</option>
+                    <option>English Dubbing</option>
+                    <option>English Subtitle</option>
+                </select>
+                
+                <select>
+                    <option>- Movie Types -</option>
+                    <option>Action</option>
+                    <option>Animation</option>
+                    <option>Adventure</option>
+                    <option>Biography</option>
+                    <option>Comedy</option>
+                    <option>Crime</option>
+                    <option>Documentary</option>
+                    <option>Drama</option>
+                    <option>Fantasy</option>
+                    <option>Family</option>
+                    <option>History</option>
+                    <option>Horror</option>
+                    <option>Music</option>
+                    <option>Musical</option>
+                    <option>Mystery</option>
+                    <option>Romance</option>
+                    <option>Sci-Fi</option>
+                    <option>Thriller</option>
+                    <option>War</option>
+                    <option>Western</option>
+                </select>
+                
+                
+                <select>
+                    <option>- Year Of Film</option>
+                    <option>2020</option>
+                    <option>2019</option>
+                    <option>2018</option>
+                    <option>2017</option>
+                    <option>2016</option>
+                    <option>2015</option>
+                    <option>2014</option>
+                    <option>2013</option>
+                    <option>2012</option>
+                    <option>2011</option>
+                    <option>2010</option>
+                    <option>2009</option>
+                    <option>2008</option>
+                    <option>2007</option>
+                    <option>2006</option>
+                    <option>2005</option>
+                    <option>2004</option>
+                    <option>2003</option>
+                    <option>2002</option>
+                    <option>2001</option>
+                    <option>2000</option>
+                    <option>1999</option>
+                    <option>1998</option>
+                    <option>1997</option>
+                    <option>1996</option>
+                    <option>1995</option>
+                    <option>1994</option>
+                    <option>1993</option>
+                    <option>1992</option>
+                    <option>1991</option>
+                    <option>1990</option>
+                </select>
+                
+                <select>
+                    <option>- IMDB Score -</option>
+                    <option>10 - 9</option>
+                    <option>9 - 8</option>
+                    <option>8 - 7</option>
+                    <option>7 - 6</option>
+                    <option>6 - 5</option>
+                </select>
+                
+                <select>
+                    <option>- Film Quality -</option>
+                    <option>1080p</option>
+                    <option>720p</option>
+                    <option>480p</option>
+                </select>
+                <div id="buttons">
+                    <button class="subbtn" type="submit">Show Movies</button>
+                    <button class="resbtn" type="reset">Reset</button>
+                    
+                </div>
+            </form>
+        </div>
+        
+        
+        
+    <div class="page-title2" id="active"><h5>Movie Types</h5></div>
+    <div id="Movie-Types" type="label">
+        <ul>
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Animation</a></li>
+            <li><a href="#">Adventure</a></li>
+            <li><a href="#">Biography</a></li>
+            <li><a href="#">Comedy</a></li>
+            <li><a href="#">Crime</a></li>
+            <li><a href="#">Documentary</a></li>
+            <li><a href="#">Drama</a></li>
+            <li><a href="#">Fantasy</a></li>
+            <li><a href="#">Family</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Horror</a></li>
+            <li><a href="#">Music</a></li>
+            <li><a href="#">Musical</a></li>
+            <li><a href="#">Mystery</a></li>
+            <li><a href="#">Romance</a></li>
+            <li><a href="#">Sci-Fi</a></li>
+            <li><a href="#">Thriller</a></li>
+            <li><a href="#">War</a></li>
+            <li><a href="#">Western</a></li>
+        </ul>
+        
+    </div>
+        
+        <div class="page-title2" id="active"><h5>Movie Types</h5></div>
+        <div id="Filters">
+        <ul>
+            <li><a href="#">English Dubbing</a></li>
+            <li><a href="#">English Subtitle</a></li>
+            <li><a href="#">Foreign Movies</a></li>
+            <li><a href="#">Local Movies</a></li>
+            <li><a href="#">1080p Movies</a></li>
+            <li><a href="#">720p Movies</a></li>
+            <li><a href="#">480p Movies</a></li>
+            <li><a href="#">IMDB Score</a></li>
+        </ul>
+        
+        </div>
+        
+        <div class="page-title2" id="active"><h5>Movie Types</h5></div>
+        <div id="Movie-Year">
+        <ul>
+            <li><a href="#">2020</a></li>
+            <li><a href="#">2019</a></li>
+            <li><a href="#">2018</a></li>
+            <li><a href="#">2017</a></li>
+            <li><a href="#">2016</a></li>
+            <li><a href="#">2015</a></li>
+            <li><a href="#">2014</a></li>
+            <li><a href="#">2013</a></li>
+            <li><a href="#">2012</a></li>
+            <li><a href="#">2011</a></li>
+            <li><a href="#">2010</a></li>
+            <li><a href="#">2009</a></li>
+            <li><a href="#">2008</a></li>
+            <li><a href="#">2007</a></li>
+            <li><a href="#">2006</a></li>
+            <li><a href="#">2005</a></li>
+            <li><a href="#">2004</a></li>
+            <li><a href="#">2003</a></li>
+            <li><a href="#">2002</a></li>
+            <li><a href="#">2001</a></li>
+            <li><a href="#">2000</a></li>
+            <li><a href="#">1999</a></li>
+            <li><a href="#">1998</a></li>
+            <li><a href="#">1997</a></li>
+            <li><a href="#">1996</a></li>
+            <li><a href="#">1995</a></li>
+            <li><a href="#">1994</a></li>
+            <li><a href="#">1993</a></li>
+            <li><a href="#">1992</a></li>
+            <li><a href="#">1991</a></li>
+            <li><a href="#">1990</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+    
+    <div id="pagination">
+        <ul>
+            <li><a href="#">First</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li><a href="#">7</a></li>
+            <li><a href="#">8</a></li>
+            <li><a href="#">9</a></li>
+            <li><a href="#">10</a></li>
+            <li class="active"><a href="#">Last</a></li>
+        </ul>
+    </div>
+    
+    <div id="scroll-top"><i class="fas fa-arrow-up"></i></div>
+    
+    
+</body>    
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
